@@ -52,7 +52,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!newItem) return;
-    //addItem
+    addItem(newItem)
     setNewItem('');
   
   }
