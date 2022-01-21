@@ -163,6 +163,8 @@ button:hover {
   outline: none;
 }
 
+/*search form*/
+
 .searchForm {
   width: 100%;
   display: flex;
