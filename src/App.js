@@ -3,6 +3,7 @@ import { Content } from './components/Content';
 import { Footer } from './components/Footer';
 import { useState } from 'react';
 import './App.css';
+import { AddItem } from './components/AddItem';
 
 function App() {
   const [items, setItems] = useState([
@@ -23,6 +24,8 @@ function App() {
     }
   ]);
 
+  const[newItem, setNewItem] = useState('');
+
   const handleCheck = (id) => {
     const listItems = items.map((item) => item.id === id ? { ...item, checked: !item.checked } : item);
     setItems(listItems);
@@ -35,13 +38,22 @@ function App() {
     localStorage.setItem('shoppinglist', JSON.stringify(listItems));
   }
 
+  const handleSubmit = (e) => {
+    console.log('submitted');
+  }
+
   return (
     <div className="App">
     <Header title="Grocery List"/>
+    <AddItem 
+      newItem={newItem}
+      setNewItem={setNewItem}
+      handleSubmit={handleSubmit}
+    />
     <Content 
-        items={items}
-        handleCheck={handleCheck}
-        handleDelete={handleDelete}
+      items={items}
+      handleCheck={handleCheck}
+      handleDelete={handleDelete}
       />
     <Footer length={items.length}/>
     </div>
