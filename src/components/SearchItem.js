@@ -1,8 +1,8 @@
 import React from 'react';
 
-export const SearchItem = ({ search, setSearch, handleSearch }) => {
+export const SearchItem = ({ search, setSearch }) => {
   return (
-    <form className='searchForm' onSubmit={handleSearch}>
+    <form className='searchForm' onSubmit={(e) => e.preventDefault()}>
         <label htmlFor='search'>search</label>
         <input
             id='search'

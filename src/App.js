@@ -24,10 +24,10 @@ function App() {
 
   }
 
-  const searchItem = (search) => {
-    const listItems = items.filter((item) => item.item === search);
-    setAndSaveItems(listItems);
-  }
+  // const searchItem = (search) => {
+  //   const listItems = items.filter((item) => item.item === search);
+  //   // setAndSaveItems(listItems);
+  // }
 
   const handleCheck = (id) => {
     const listItems = items.map((item) => item.id === id ? { ...item, checked: !item.checked } : item);
@@ -46,12 +46,12 @@ function App() {
     setNewItem('');
   }
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (!search) return;
-    searchItem(search);
-    setSearch('');
-  }
+  // const handleSearch = (e) => {
+  //   e.preventDefault();
+  //   if (!search) return;
+  //   searchItem(search);
+  //   setSearch('');
+  // }
 
   return (
     <div className="App">
@@ -64,10 +64,9 @@ function App() {
     <SearchItem
       search={search}
       setSearch={setSearch}
-      handleSearch={handleSearch}
     />
     <Content 
-      items={items}
+      items={items.filter(item => ((item.item).toLowerCase()).includes(search.toLowerCase()))}
       handleCheck={handleCheck}
       handleDelete={handleDelete}
       />
