@@ -24,11 +24,6 @@ function App() {
 
   }
 
-  // const searchItem = (search) => {
-  //   const listItems = items.filter((item) => item.item === search);
-  //   // setAndSaveItems(listItems);
-  // }
-
   const handleCheck = (id) => {
     const listItems = items.map((item) => item.id === id ? { ...item, checked: !item.checked } : item);
     setAndSaveItems(listItems);
@@ -45,13 +40,6 @@ function App() {
     addItem(newItem)
     setNewItem('');
   }
-
-  // const handleSearch = (e) => {
-  //   e.preventDefault();
-  //   if (!search) return;
-  //   searchItem(search);
-  //   setSearch('');
-  // }
 
   return (
     <div className="App">
