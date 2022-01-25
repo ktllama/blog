@@ -4,7 +4,7 @@ export const Content = ({ items , handleCheck, handleDelete }) => {
 
 
     return (
-        <main>
+        <>
             {items.length ? (
                 <ItemList 
                     items={items}
@@ -14,6 +14,6 @@ export const Content = ({ items , handleCheck, handleDelete }) => {
             ) : (
                 <p style={{marginTop : '2rem' }}> Your list is empty. </p>
             )}
-        </main>
+        </>
     )
 }
