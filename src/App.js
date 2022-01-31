@@ -70,16 +70,15 @@ function App() {
     setItems(listItems);
 
     //Updating list- patch- need to first define item we will update (myItem) then use update options to update checked state
-    const myItem = items.filter((item) => item.id === id);
-    console.log(myItem);
+    const myItem = listItems.filter((item) => item.id === id);
     const updateOptions = {
       method: 'PATCH',
       headers: {
-        'Content-Type': 'application-json'
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify({checked: myItem[0].checked}) //setting one item- not array [0] and its checked status
+      body: JSON.stringify({ checked: myItem[0].checked}) //setting one item- not array [0] and its checked status
     };
-    const reqUrl = `${API_URL}/${id}` //acessing a specific post to update with patch w this url+id
+    const reqUrl = `${API_URL}/${id}` //acessing a specific item to update with patch w this url+id
     const result = await apiRequest(reqUrl, updateOptions);
     if (result) setFetchError(result);
   }

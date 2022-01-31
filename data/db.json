@@ -2,12 +2,12 @@
   "items": [
     {
       "id": 1,
-      "checked": false,
+      "checked": true,
       "item": "cheese puffs"
     },
     {
       "id": 2,
-      "checked": false,
+      "checked": true,
       "item": "crackers"
     },
     {
