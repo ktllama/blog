@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { AddItem } from './components/AddItem';
 import { SearchItem } from './components/SearchItem';
 import './App.css';
+import apiRequest from './components/apiRequest';
 
 function App() {
   const API_URL = 'http://localhost:3500/items';
@@ -50,6 +51,15 @@ function App() {
     const myNewItem = { id, checked: false, item };
     const listItems = [ ...items, myNewItem ];
     setItems(listItems);
+
+    //define post options here to add item to server
+    const postOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(myNewItem)
+    }
 
   }
 
