@@ -46,7 +46,7 @@ function App() {
   //only want to run and load data at load time
   //can send messaged back to rest api to keep database insync with state
 
-  const addItem = (item) => {
+  const addItem = async (item) => {
     const id = items.length ? items[items.length - 1].id + 1 : 1;
     const myNewItem = { id, checked: false, item };
     const listItems = [ ...items, myNewItem ];
@@ -59,13 +59,29 @@ function App() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(myNewItem)
-    }
+    };
+    const result = await apiRequest(API_URL, postOptions);
+    if (result) setFetchError(result); // if there is an error message- because its not null, the error message in function above will be set to the error message of the post request
 
   }
 
-  const handleCheck = (id) => {
+  const handleCheck = async (id) => {
     const listItems = items.map((item) => item.id === id ? { ...item, checked: !item.checked } : item);
     setItems(listItems);
+
+    //Updating list- patch- need to first define item we will update (myItem) then use update options to update checked state
+    const myItem = items.filter((item) => item.id === id);
+    console.log(myItem);
+    const updateOptions = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application-json'
+      },
+      body: JSON.stringify({checked: myItem[0].checked}) //setting one item- not array [0] and its checked status
+    };
+    const reqUrl = `${API_URL}/${id}` //acessing a specific post to update with patch w this url+id
+    const result = await apiRequest(reqUrl, updateOptions);
+    if (result) setFetchError(result);
   }
 
   const handleDelete = (id) => {
