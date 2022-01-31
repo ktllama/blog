@@ -18,7 +18,7 @@ function App() {
   useEffect(() =>{
 
     const fetchItems = async () => {
-      try {
+      try { //this is READ part of crud
         const response = await fetch(API_URL);
         //waiting for response with data from api
         if(!response.ok) throw Error('Did not recieve expected data');
