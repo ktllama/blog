@@ -47,12 +47,13 @@ function App() {
   //can send messaged back to rest api to keep database insync with state
 
   const addItem = async (item) => {
+    //add item to state
     const id = items.length ? items[items.length - 1].id + 1 : 1;
     const myNewItem = { id, checked: false, item };
     const listItems = [ ...items, myNewItem ];
     setItems(listItems);
 
-    //define post options here to add item to server
+    //POST item to api
     const postOptions = {
       method: 'POST',
       headers: {
@@ -66,10 +67,11 @@ function App() {
   }
 
   const handleCheck = async (id) => {
+    //UPDATE item in state
     const listItems = items.map((item) => item.id === id ? { ...item, checked: !item.checked } : item);
     setItems(listItems);
 
-    //Updating list- patch- need to first define item we will update (myItem) then use update options to update checked state
+    //UPDATE/PATCH item in api- patch- need to first define item we will update (myItem) then use update options to update checked state
     const myItem = listItems.filter((item) => item.id === id);
     const updateOptions = {
       method: 'PATCH',
@@ -83,9 +85,16 @@ function App() {
     if (result) setFetchError(result);
   }
 
-  const handleDelete = (id) => {
+  const handleDelete = async  (id) => {
+    //DELETE item in state
     const listItems = items.filter((item) => item.id !== id);
     setItems(listItems);
+
+    //DELETE item in api
+    const deleteOptions = { method: 'DELETE'};
+    const reqUrl = `${API_URL}/${id}` //acessing a specific item to update with patch w this url+id
+    const result = await apiRequest(reqUrl, deleteOptions);
+    if (result) setFetchError(result);
   }
 
   const handleSubmit = (e) => {

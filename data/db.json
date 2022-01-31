@@ -1,16 +1,6 @@
 {
   "items": [
     {
-      "id": 1,
-      "checked": true,
-      "item": "cheese puffs"
-    },
-    {
-      "id": 2,
-      "checked": true,
-      "item": "crackers"
-    },
-    {
       "id": 3,
       "checked": false,
       "item": "waffles"
@@ -21,9 +11,9 @@
       "item": "cookies"
     },
     {
-      "id": 5,
+      "id": 6,
       "checked": false,
-      "item": "test"
+      "item": "banana"
     }
   ]
 }
