@@ -41,8 +41,8 @@ function App() {
     setTimeout(() => {
       (async () => await fetchItems())();
     }, 2000);
-    //simulating a wait like you would have to for a real api
   }, []);
+
   //only want to run and load data at load time
   //can send messaged back to rest api to keep database insync with state
 
