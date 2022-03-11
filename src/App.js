@@ -8,7 +8,7 @@ import './App.css';
 import apiRequest from './components/apiRequest';
 
 function App() {
-  const API_URL = 'https://my-json-server.typicode.com/ktllama/checklistdata/db';
+  const API_URL = 'https://my-json-server.typicode.com/ktllama/checklistdata';
   //this url will be a constant and will not change
   const [items, setItems] = useState([]);
   const [newItem, setNewItem] = useState('');
